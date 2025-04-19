@@ -1,26 +1,31 @@
 <div class="about-top">
-  <div style="height: 30%;" class="row">
-    <h3 class="about-title mx-auto">Hello, I am</h3>
+  <div style="height: 20%;" class="row">
+    <h4 class="about-title mx-auto">Hello, I am</h4>
   </div>
   <div style="height: 70%;">
     <p class="about-desc">{{ aboutMe }}</p>
   </div>
 </div>
-<div class="about-content">
-  <div class="row ml-1">
-    <div class="col-md-7">
-      <div style="height: 30%;" class="ml-2 row align-items-end">
-        <h4 style="color:blue; margin-top: 20px;">My Skills</h4>
-      </div>
-      <div style="height: 70%;">
-        <div *ngFor="let item of skills; let indexElement = index">
-          <div *ngIf="indexElement % 2 === 1" class="skill-box">{{ item }}</div>
-          <div *ngIf="indexElement % 2 === 0" class="skill-box">{{ item }}</div>
+<div class="about-content position-relative">
+  <div class="row">
+    <!-- Skills Section -->
+    <div class="col-md-6">
+      <div class="skills-section" style="margin-left: 15%;">
+        <h4 style="color:blue; margin-top: 15%;">My Skills</h4>
+        <div style="height: 80%; width: 100%; overflow-wrap: break-word; overflow: hidden;">
+          <div class="skills-grid"></div>
+          <div *ngFor="let skill of skills" class="skill-item">
+            <span class="skill-icon" style="margin-right: 7px;">✔</span>
+            <span class="skill-name">{{ skill }}</span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-5">
-      <img class="img-fluid about-svg" src="../assets/images/about.svg" alt="About Image">
+    <!-- Image Section -->
+    <div class="col-md-6">
+      <div class="image-section">
+        <img class="img-fluid about-svg" src="../assets/images/Skill.svg" alt="About Image">
+      </div>
     </div>
   </div>
 </div>

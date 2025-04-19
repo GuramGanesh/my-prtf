@@ -8,14 +8,14 @@ export const Configuration =
     userDateOfBirth:"31/10/1999",
     userAddress:"Hyderbad,India,500008.",
     userPhone:"+91 8309600944",
-    aboutMe:"Ganesh Guram. A Passionate developer with 3+ years of experience designing, developing, and delivering innovative software solutions. Proven adaptability to emerging technologies and a track record of providing cutting-edge tools to solve complex challenges. Recognized as a reliable leader committed to driving results and advancing organizational objectives.",
+    aboutMe:"Ganesh Guram, A passionate developer with 3+ years of experience designing, developing, and delivering innovative software solutions. Proven adaptability to emerging technologies and a track record of providing cutting-edge tools to solve complex challenges. Recognized as a reliable leader committed to driving results and advancing organizational objectives.",
 };
 
 //Personal Informations
 
 export const Skills  = 
 [
-    "Java","Python","Angular","Data Structures & Angular","Amazon Web Services(AWS)","Javascript"
+    "Java","Python","Angular","Data Structures & Algorithms","Amazon Web Services(AWS)","Javascript","Spring Boot","MySql","MongoDB","Deep Learning","Android Application Development","Devops"
 ];
 
 //Max skills limit is 6 . If you add more than 6 skill , you may be disappointed.
