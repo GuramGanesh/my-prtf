@@ -11,20 +11,38 @@ import { CommonModule } from '@angular/common';
 })
 export class ProfileComponent {
 
+calculateAge(arg0: string): number {
+  // Convert the date string to a Date object Format 31/10/1999
+  const [day, month, year] = arg0.split('/').map(Number);
+  const dob = new Date(year, month - 1, day);
+  const today = new Date();
+  if (isNaN(dob.getTime())) {
+    console.error('Invalid date format:', arg0);
+    return NaN;
+  }
+  let age = today.getFullYear() - dob.getFullYear();
+  const monthDiff = today.getMonth() - dob.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+    age--;
+  }
+  return age;
+}
+
   _profileUrl:string;
   _userName:string;
   _userJob:string;
   _userLocation:string;
   _userEmail:string;
+  _userPhone:string;
   _userDateOfBirth:string;
   _github:string;
   _linkedin:string;
-  _twitter:string;
+  _x:string;
   _medium:string;
   constructor() { 
     this._profileUrl=Configuration.profileUrl;
     this._github=SocialMedia.github;
-    this._twitter=SocialMedia.X;
+    this._x=SocialMedia.X;
     this._linkedin=SocialMedia.linkedin;
     this._medium=SocialMedia.medium;
     this._userName=Configuration.userName;
@@ -32,5 +50,6 @@ export class ProfileComponent {
     this._userLocation=Configuration.userLocation;
     this._userDateOfBirth=Configuration.userDateOfBirth;
     this._userEmail=Configuration.userEmail;
+    this._userPhone=Configuration.userPhone;
   }
 }
