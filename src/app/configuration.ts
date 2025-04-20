@@ -113,7 +113,7 @@ export const achievements  = [
 
 export const SocialMedia =
 {
-    github:"https://github.com/RamkiGanesh007",
+    github:"https://github.com/GuramGanesh",
     X:"https://x.com/ramkiganesh07",
     linkedin:"https://www.linkedin.com/in/ganesh-guram-b37455150/",
     medium:"https://medium.com/@gk4309303"
