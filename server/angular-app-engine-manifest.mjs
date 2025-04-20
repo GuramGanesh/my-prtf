@@ -1,6 +1,6 @@
 
 export default {
-  basePath: '/GuramGanesh',
+  basePath: 'https://GuramGanesh.github.io/my-prtf',
   supportedLocales: {
   "en-US": ""
 },

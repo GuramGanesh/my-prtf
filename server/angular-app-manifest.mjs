@@ -2,19 +2,19 @@
 export default {
   bootstrap: () => import('./main.server.mjs').then(m => m.default),
   inlineCriticalCss: true,
-  baseHref: '/GuramGanesh/',
+  baseHref: 'https://GuramGanesh.github.io/my-prtf/',
   locale: undefined,
   routes: [
   {
     "renderMode": 2,
-    "route": "/GuramGanesh"
+    "route": "/my-prtf"
   }
 ],
   entryPointToBrowserMapping: undefined,
   assets: {
-    'index.csr.html': {size: 9346, hash: 'd1be09b2750199045943d8daa4e6237e4d5a89e8981c9537e8a922ee0edcb12f', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
-    'index.server.html': {size: 1493, hash: '804c6b7095d9e28e629ea229094524bd59cba82196583757636a961348843e10', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
-    'index.html': {size: 29674, hash: '3c013b8724672c981c6910d650bac93a6a21e39af99b5f2d876ba60fb2b7e336', text: () => import('./assets-chunks/index_html.mjs').then(m => m.default)},
+    'index.csr.html': {size: 9496, hash: '9d4670ccbf732169e00f1549566e8d7bc94dc06f067ad670322b895b07b289d1', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 1618, hash: 'e03eff55dca967c57bf8e83578221c1b846d144157622f8506b3096cbcb6129e', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'index.html': {size: 8157, hash: 'da2d40374e2088ea6400e389c4f55a7e7c474a60dda89ba446dd740e11e6a704', text: () => import('./assets-chunks/index_html.mjs').then(m => m.default)},
     'styles-54EDTLGR.css': {size: 303056, hash: '9zSFlyv1Gm4', text: () => import('./assets-chunks/styles-54EDTLGR_css.mjs').then(m => m.default)}
   },
 };
