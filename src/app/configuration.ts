@@ -65,15 +65,43 @@ export const Education = [
 export const Projects = [
     {
       name: "Emotion Based Music Player",
-      date: "04/2021 - 05/2021",
-      description: "Created an Android music player using TensorFlow and Python, achieving 85% accuracy in real-time emotion detection with VGG16 model. Dynamically curated playlists based on 5 distinct emotions, enhancing user experience.",
-      technologies: ["TensorFlow", "Python", "Android Studio"]
+      type: "Android Application",
+      description: "Created an Android music player using TensorFlow and Python, achieving 90% accuracy in real-time emotion detection with VGG16 model. Dynamically curated playlists based on 5 distinct emotions, enhancing user experience.",
+      technologies: ["TensorFlow", "Python", "Android Native Development", "Java", "Deep Learning"],
+      githubLink:"https://github.com/GuramGanesh/Emotion-Player",
+      videoLink:"https://drive.google.com/file/d/1XES4mJJctzV69Y71b4NdY7DDjtDYHI0Bzw/view?usp=sharing",
+      achievements:[
+        "Achieved low-latency emotion inference optimized for mobile performance.",
+        "Seamlessly integrated AI model into Android using TFLite conversion and optimization.",
+        "Built a user-friendly UI with smooth playlist transitions and emotion-tracking visualization.",
+        "Improved user experience by offering emotion-based music curation rather than traditional genre or artist filtering."
+      ]
     },
     {
       name: "Hospital Inventory Management REST API",
-      date: "06/2021 - 08/2021",
+      type: "Web Application",
       description: "Developed a NodeJS-based API with two primary routes for hospital inventory data management, showcasing leadership in scalable design. Ensured data retrieval and manipulation met practical needs.",
-      technologies: ["Node.js", "MongoDB"]
+      technologies: ["Node.js", "MongoDB", "Express.js", "JavaScript"],
+      githubLink:"https://github.com/GuramGanesh/HospitalInventoryAPI",
+      videoLink:"https://www.youtube.com/watch?v=0g1v2x4X8aA",
+      achievements:[
+        "Designed a RESTful API with two primary routes for hospital inventory data management.",
+        "Implemented CRUD operations for efficient data retrieval and manipulation.",
+        "Ensured the API met practical needs and was scalable for future enhancements."
+      ]
+    },
+    {
+      name:"CropYieldPredictor",
+      type:"Python Web Application",
+      description:"Developed a web application using Flask and Python for crop yield prediction, utilizing machine learning algorithms to analyze agricultural data and provide accurate forecasts.",
+      technologies:["Flask","Python","Machine Learning"],
+      githubLink:"https://github.com/GuramGanesh/CropYieldPredictor",
+      videoLink:"https://www.youtube.com/watch?v=0g1v2x4X8aA",
+      achievements:[
+        "Implemented machine learning algorithms for accurate crop yield predictions.",
+        "Designed a user-friendly interface for easy data input and result visualization.",
+        "Optimized the application for performance and scalability."
+      ]
     }
   ];
 

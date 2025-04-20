@@ -1,0 +1,37 @@
+/* Styling the scrollbar */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: lightgrey; /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Rounded corners for the scrollbar thumb */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Background color of the scrollbar track */
+  }
+
+  .resume-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    margin: 20px 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .resume-card:hover {
+    transform: translateY(-5px);
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2), 0 12px 20px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+
+  .resume-card-title
+  {
+    font-size: 1.2rem;
+    color: #4f4e4e;
+    margin-bottom: 10px;
+  }

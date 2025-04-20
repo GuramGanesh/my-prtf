@@ -9,7 +9,7 @@ import { ProjectsComponent } from './projects/projects.component';
 export const AppRoutes:Routes =[
     {path:"about" , component:AboutComponent},
     {path:"contact" , component:ContactComponent},
-    {path:"project" , component:ProjectsComponent},
+    {path:"projects" , component:ProjectsComponent},
     {path:"experience" , component:ExperienceComponent},
     {path:"achievements" , component:AchievementsComponent},
     {path:"resume" , component:ResumeComponent},

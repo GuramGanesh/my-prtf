@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { JobExperience, Education } from '../configuration';
+import { JobExperience } from '../configuration';
 
 @Component({
   selector: 'app-experience',
