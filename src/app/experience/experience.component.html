@@ -1,0 +1,22 @@
+<div class="row middle-line"> 
+  <div class="col ml-3">
+    <div style="margin:5%;height:68%; overflow-y: auto;">
+      <div *ngFor="let item of _jobs" style="color: rgb(58, 57, 57);">
+        <div class="resume-card">
+          <strong class="resume-card-title">
+        <i 
+          class="fa" 
+          [ngClass]="item.company === 'DBS Tech India' ? 'fa-university' : 'fa-building'" 
+          aria-hidden="true">
+        </i>
+        {{item.company}} ( {{item.Start_Date}}-{{item.End_Date}} ) - {{calculateYearsofExperience(item.Start_Date, item.End_Date)}}
+          </strong>
+          <hr style="margin:1px !important;"><small>{{item.rank}}</small>
+          <ul>
+        <li *ngFor="let point of item.description">{{point}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

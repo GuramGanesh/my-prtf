@@ -1,0 +1,36 @@
+<div class="row middle-line"> 
+  <div class="col ml-3">
+    <div style="margin:5%; max-height: 580px; height: 100%; overflow-y: auto;">
+      <div *ngFor="let project of _projects" style="color: rgb(58, 57, 57);">
+        <div class="resume-card">
+          <strong class="resume-card-title">
+            {{project.name}} - {{project.type}}
+          </strong>
+          <hr style="margin:1px !important;">
+          <p>{{project.description}}</p>
+          <ul>
+            <li *ngFor="let achievement of project.achievements">
+              {{achievement}}
+            </li>
+          </ul>
+          <p>Skills: {{ project.technologies.join(' , ') }}</p>
+            <div class="button-container" style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
+            <a *ngIf="project.githubLink" [href]="project.githubLink" target="_blank" class="btn btn-primary">
+              <i class="fa fa-code"></i> Code
+            </a>
+            <button *ngIf="project.videoLink" (click)="openVideoPopup(project.videoLink)" class="btn btn-secondary">
+              <i class="fa fa-video-camera"></i> Video
+            </button>
+            </div>
+        </div>
+      </div>
+      <!-- Video Popup -->
+      <div *ngIf="isVideoPopupVisible" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); z-index: 1000;">
+        <div style="position: relative; max-width: 800px; margin: 5% auto; background: #fff; padding: 20px; border-radius: 8px; overflow: hidden;">
+        <video id="videoElement" controls style="width: 100%; height: auto;"></video>
+        <button (click)="closeVideoPopup()" style="position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,20 +1,59 @@
-import { JobExperience, Education } from '../configuration';
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { resumeLink } from '../configuration';
+import * as pdfjsLib from 'pdfjs-dist';
 
 @Component({
-  selector: 'app-Resume',
-  imports: [CommonModule],
-  templateUrl: './Resume.component.html',
-  styleUrls: ['./Resume.component.css']
+  selector: 'app-resume',
+  templateUrl: './resume.component.html',
+  styleUrls: ['./resume.component.css'],
 })
-export class ResumeComponent {
+export class ResumeComponent implements AfterViewInit {
+  _resumeLink: string = resumeLink;
+  currentScale = 1.3;
+  
+  @ViewChild('pdfContainer', { static: false }) 
+  pdfContainer!: ElementRef<HTMLDivElement>;
 
-  _jobs:any;
-  _educations;
-  constructor() { 
-    this._jobs=JobExperience;
-    this._educations=Education;
+  ngAfterViewInit(): void {
+    this.renderPDF(this._resumeLink);
   }
 
+  async renderPDF(pdfUrl: string) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    try {
+      const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+      this.pdfContainer.nativeElement.innerHTML = '';
+
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        const page = await pdf.getPage(pageNum);
+        const viewport = page.getViewport({ scale: this.currentScale });
+        
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d')!;
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        await page.render({
+          canvasContext: context,
+          viewport: viewport
+        }).promise;
+
+        this.pdfContainer.nativeElement.appendChild(canvas);
+      }
+    } catch (error) {
+      console.error('Error rendering PDF:', error);
+    }
+  }
+
+  // Add zoom functionality
+  zoomIn() {
+    this.currentScale = Math.min(this.currentScale + 0.1, 2.5);
+    this.renderPDF(this._resumeLink);
+  }
+
+  zoomOut() {
+    this.currentScale = Math.max(this.currentScale - 0.1, 0.8);
+    this.renderPDF(this._resumeLink);
+  }
 }

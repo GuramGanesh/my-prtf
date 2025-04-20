@@ -1,43 +1,44 @@
-.container {
-    display: flex;
-    width: 100%;
-    height: 600px;
-    justify-content: center;
-    align-items: center;
-  }
-h4{
-    font-family: 'Inter', sans-serif;
+/* Updated CSS */
+.pdf-container {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  overflow-y: auto;
 }
-.resume-card{
-    width: 320px;
-    min-height: 125px;
-    height: 100%;
-    /*margin: 0px 15px;*/
+
+canvas {
+  position: relative;
+  z-index: 1; /* Lower than controls */
+  margin: 10px auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-.resume-icon{
-    height: 100%;
-    width: 25px;
-    color:green;
+
+.transparent-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.15);
 }
-.icon-text{
-    margin-left: 0px;
-    margin-top: -20px;
-    float: left;
+
+.transparent-btn {
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.3rem;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.middle-line{
-    border-right: 1px solid lightgray;
-}
-.resume-card-title{
-    color: black !important;
-    font-family: 'Inter', sans-serif;
-    min-height: 150px !important;
-}   
-.resume-title{
-    color: blue !important;
-    font-family: 'Inter', sans-serif;
-    min-height: 150px !important;
-}
-.img-fluid{
-    width: 300px;
-    height: 200px;
+
+.pdf-controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  gap: 8px;
 }
