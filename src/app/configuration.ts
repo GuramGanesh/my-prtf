@@ -18,30 +18,36 @@ export const Skills  =
     "Java","Python","Angular","Data Structures & Algorithms","Amazon Web Services(AWS)","Javascript","Spring Boot","MySql","MongoDB","Deep Learning","Android Application Development","Devops"
 ];
 
-//Max skills limit is 6 . If you add more than 6 skill , you may be disappointed.
-
 export const JobExperience = [
     {
       company: "DBS Tech India",
-      rank: "Software Engineer II",
-      date: "05/2019 - Present",
-      description: "Designed a high-performance Spring Boot Document Viewer, collaborating with stakeholders to support all file types (including office files), serving 10K+ documents daily from 3M+ processed. Architected an Archival Framework for IBPM using stored procedures, optimizing 80+ transaction tables and reducing app load time by 35% with adaptability to evolving needs. Deployed a rule engine for business processes, leveraging communication skills to align with business needs, processing 3M+ onboarding applications. Enhanced CI/CD pipelines through problem-solving, automating password rotation and security checks, reducing vulnerabilities and streamlining credential management. Led Spring Boot and JBoss upgrades with strong leadership, cutting downtime by 20% and boosting performance by 30%, saving 10 hours of manual work weekly."
+      rank: "Software Engineer",
+      Start_Date: "15/08/2022",
+      End_Date: "Present",
+      description: [
+        "Designed a high-performance Spring Boot Document Viewer, collaborating with stakeholders to support all file types(including office files), serving 10K+ documents daily from 3M+ processed.",
+        "Architected an Archival Framework for IBPM using stored procedures, optimizing 80+ transaction tables and reducing app load time by 35% with adaptability to evolving needs.",
+        "Deployed a rule engine for business processes, leveraging communication skills to align with business needs, processing 3M+ onboarding applications.",
+        "Enhanced CI/CD pipelines through problem-solving, automating password rotation and security checks, reducing vulnerabilities and streamlining credential management.",
+        "Led Spring Boot and JBoss upgrades with strong leadership, cutting downtime by 20% and boosting performance by 30%, saving 10 hours of manual work weekly."
+      ]
     },
     {
       company: "Cognizant",
       rank: "Intern",
-      date: "05/2015 - 01/2019",
-      description: "Built full-stack web applications using Angular, JavaScript, HTML, and Spring, demonstrating adaptability and earning a full-time role offer through effective collaboration."
+      Start_Date: "03/2022",
+      End_Date: "08/2022",
+      description: ["Built full-stack web applications using Spring ,Angular, JavaScript and HTML, demonstrating adaptability and earning a full-time role offer through effective collaboration."]
     },
     {
       company: "Virtusa",
       rank: "Intern Technology",
-      date: "05/2021 - 11/2021",
-      description: "Developed embedded device code with MicroPython and MQTT for real-time updates, deployed to 1000+ devices across 100 hospitals with strong problem-solving skills. Optimized code for efficiency and reliability through cross-functional collaboration, ensuring seamless performance across teams."
+      Start_Date: "05/2021",
+      End_Date: "11/2021",
+      description: ["Developed embedded device code with MicroPython and MQTT for real-time updates, deployed to 1000+ devices across 100 hospitals with strong problem-solving skills.",
+        "Optimized code for efficiency and reliability through cross-functional collaboration, ensuring seamless performance across teams."]
     }
   ];
-
-//Max job experiences limit is 3 . If you add more than 3 skill , you may be disappointed.
 
 export const Education = [
     {
@@ -55,8 +61,6 @@ export const Education = [
       description: "Special Diploma in Computer Programming."
     }
   ];
-
-//Max education limit is 3 . If you add more than 3 skill , you may be disappointed.
 
 export const Projects = [
     {
@@ -73,15 +77,11 @@ export const Projects = [
     }
   ];
 
-//Max services limit is 6 . If you add more than 6 skill , you may be disappointed.
-
 export const achievements  = [
     "Earned 7 recognitions for driving project success and leadership at DBS Tech India, including optimizing system performance and delivering scalable solutions (2022-Present)",
     "Awarded Super Techie Q1 2024 and Best Accelerated Promotion for technical excellence and effective communication",
     "Honored as Best Student of the Year by Government Institute of Electronics for academic leadership and collaboration"
   ];
-
-//Max testimonials limit is 4 . If you add more than 4 skill , you may be disappointed.
 
 export const SocialMedia =
 {
