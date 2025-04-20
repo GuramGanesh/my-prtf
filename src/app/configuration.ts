@@ -118,3 +118,5 @@ export const SocialMedia =
     linkedin:"https://www.linkedin.com/in/ganesh-guram-b37455150/",
     medium:"https://medium.com/@gk4309303"
 }
+
+export const resumeLink = "https://raw.githubusercontent.com/GuramGanesh/RamkiGanesh007/main/R_GaneshGuram_Latest.pdf";

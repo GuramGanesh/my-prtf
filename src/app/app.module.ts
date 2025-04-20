@@ -12,6 +12,7 @@ import { ResumeComponent } from './Resume/Resume.component';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProjectsComponent } from './projects/projects.component';
     AppComponent,BrowserModule,
     RouterModule.forRoot(AppRoutes),ProfileComponent,NavComponent,
     ContactComponent,ResumeComponent,AboutComponent,
-    AchievementsComponent,ExperienceComponent,ProjectsComponent],
+    AchievementsComponent,ExperienceComponent,ProjectsComponent,
+    PdfViewerModule],
     providers: [],
     bootstrap: []
 })
