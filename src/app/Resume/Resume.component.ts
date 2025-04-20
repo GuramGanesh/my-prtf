@@ -4,8 +4,8 @@ import * as pdfjsLib from 'pdfjs-dist';
 
 @Component({
   selector: 'app-resume',
-  templateUrl: './resume.component.html',
-  styleUrls: ['./resume.component.css'],
+  templateUrl: './Resume.component.html',
+  styleUrls: ['./Resume.component.css'],
 })
 export class ResumeComponent implements AfterViewInit {
   _resumeLink: string = resumeLink;
@@ -19,7 +19,7 @@ export class ResumeComponent implements AfterViewInit {
   }
 
   async renderPDF(pdfUrl: string) {
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.0.375/pdf.worker.min.mjs';
 
     try {
       const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
