@@ -4,6 +4,7 @@
   background: rgba(196, 196, 196, 0.3);
   border-radius: 0px 0px 45% 15%;
 }
+
 .about-title {
   font-family: "Inter", sans-serif;
   margin-top: 18px;
@@ -11,32 +12,70 @@
   text-align: center;
   color: #000000;
 }
+
 .about-desc {
   margin: 0px 50px 0px 50px;
   font-family: "Inter", sans-serif;
-  text-justify: auto;
-  font-size: 1vw;
-  line-height: 35px;
+  text-align: justify;
+  font-size: 1rem;
+  line-height: 1.5rem;
   text-indent: 5%;
   color: #000000;
 }
-.about-content{
-    width: 100%;
-    height: 55%;
+
+.about-content {
+  width: 100%;
+  height: auto;
 }
-.about-svg{
-    width: 300px;
-    height: 550px;
+
+.about-svg {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
 }
-.skill-box{
-    width: 100px;
-    height: 30px;
-    background:  rgba(196, 196, 196, 0.3);
-    box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.25);
-    font-family: "Inter", sans-serif;
-    text-align: center;
-    padding: 2px 4px;
-    margin: 10px;
-    color: black;
-    float:left;
+
+.skill-box {
+  width: 100px;
+  height: 30px;
+  background: rgba(196, 196, 196, 0.3);
+  box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.25);
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  padding: 2px 4px;
+  margin: 10px;
+  color: black;
+  float: left;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 1.25rem;
+  }
+
+  .about-desc {
+    margin: 0 20px;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+
+  .skills-section {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .skill-box {
+    width: 80px;
+    height: 25px;
+    font-size: 0.8rem;
+  }
+
+  .about-svg {
+    max-width: 200px;
+    height: auto;
+  }
+
+  .image-section {
+    margin-top: 20px;
+  }
 }
