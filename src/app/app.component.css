@@ -1,13 +1,15 @@
 @media (max-width: 768px) {
-    .card-body {
-      height: auto; /* Adjust height for smaller screens */
-    }
-  
-    .navbar {
-      flex-direction: column; /* Stack navbar items vertically */
-    }
-  
-    .text-grey {
-      font-size: 12px; /* Adjust font size for smaller screens */
-    }
+  .card-body {
+    height: auto;
+    padding: 10px;
+  }
+
+  .profile-container {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .content-container {
+    padding: 10px;
+  }
 }

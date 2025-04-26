@@ -1,29 +1,56 @@
-.profile-icon{
-    height: 30px;
-    width: 30px;
-    color:black;
-    padding: 2px;
-    text-align: center;
-}
-.social-media{
-    margin:20px 0px 0px 0px;
-    text-align: center;
-    font-family: "Inter", sans-serif;
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    padding: 5px;
-}
-.about-me>p>i{
-    margin-bottom:5px;
+.profile-container {
+    padding: 13px;
+  }
+  
+  .profile-image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+  }
+  
+  .profile-icon {
+    font-size: 1.5em;
+    margin: 0 10px;
+    color: black;
+  }
+  
+  .social-media {
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  .about-me {
+    padding: 15px;
+    align-items: left;
+  }
+
+  .about-me > p {
+    font-size: 1rem;
+    margin: 15px 0;
+  }
+  
+  .about-me > p > i {
     margin-right: 5px;
-    width: 30px;
-}
-.about-me>p{
-    font-size: 0.7vw;
-}
-.container-fluid{
-    margin-left: -15px !important;
-}
-.text-center{
-    font-family: "Inter", sans-serif !important;
-}
+    font-size: 1.2em;
+  }
+  
+  /* Media Queries for Mobile Devices */
+  @media (max-width: 768px) {
+    .profile-container {
+      padding: 10px;
+    }
+  
+    .profile-image {
+      max-width: 150px;
+    }
+  
+    .profile-icon {
+      font-size: 1.2em;
+      margin: 5px;
+    }
+  
+    .about-me > p {
+      font-size: 0.9rem;
+    }
+  }
