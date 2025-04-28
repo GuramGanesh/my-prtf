@@ -1,22 +1,22 @@
-<div class="row d-flex vh-100 align-items-center" style="margin-bottom:-20px">
-  <div class="col"></div>
-  <div class="col-md-2 d-none d-md-block">
-    <div class="card">
-      <div class="card-body align-self-center" style="height: 700px">
-        <app-Profile></app-Profile>
+<div class="container-fluid main-container">
+  <div class="row">
+    <!-- Profile Section -->
+    <div class="col-12 col-md-2 mb-4 profile-column">
+      <div class="card profile-card">
+        <div class="card-body">
+          <app-Profile></app-Profile>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-8 col-sm-12">
-    <div style="min-height: 700px !important;background-color:#ffffff; height: 700px">
+    <!-- Content Section -->
+    <div class="col-12 col-md-10 content-column">
       <app-Nav></app-Nav>
       <router-outlet></router-outlet>
     </div>
   </div>
-  <div class="col"></div>
-  </div>
-  <div class="d-flex justify-content-center mb-10">
-    <p class="text-grey" style="text-decoration: solid; padding:1px;">
-      This Application is built on Angular 19,All Copyrights Reserved&#64;2025
-    </p>
-  </div>
+</div>
+<div class="d-flex justify-content-center mb-10">
+  <p class="text-grey" style="text-decoration: solid; padding:1px;">
+    This Application is built on Angular 19,All Copyrights Reserved&#64;2025
+  </p>
+</div>

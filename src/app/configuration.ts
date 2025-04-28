@@ -3,10 +3,10 @@ export const Configuration =
     profileUrl:"https://avatars.githubusercontent.com/u/33938427?s=460&u=8d75b0e5a475bc8cd6f94aa5612e2b86faff6207&v=4",
     userName:"Ganesh Guram",
     userJob:"Software Engineer",
-    userLocation:"Hyderbad,India,500008",
-    userEmail:"gk4309303@gmail.com",
+    userLocation:"Hyderbad,India",
+    userEmail:"gk4309303@gmail",
     userDateOfBirth:"31/10/1999",
-    userAddress:"Hyderbad,India,500008.",
+    userAddress:"Hyderbad,India,500008",
     userPhone:"+91 8309600944",
     aboutMe:"Ganesh Guram, A passionate developer with 3+ years of experience designing, developing, and delivering innovative software solutions. Proven adaptability to emerging technologies and a track record of providing cutting-edge tools to solve complex challenges. Recognized as a reliable leader committed to driving results and advancing organizational objectives.",
 };
