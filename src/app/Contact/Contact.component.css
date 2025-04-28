@@ -1,16 +1,75 @@
-.contact-card{
-    width: 100%;
+
+/* Contact.component.css */
+.row.ml-1 {
+    margin-left: 0 !important; /* Override Bootstrap's negative margin */
+    margin-right: 0 !important; /* Ensure full width */
+  }
+  
+  .testimonial-card {
     text-align: center;
-    height: 250px;
-    font-family: 'Inter',sans-serif;
-}
-.contact-image{
-    width: 240px;
-    height: 260px;
+    padding-bottom: 20px; /* Add some spacing below the image on smaller screens */
+  }
+  
+  .contact-image {
+    max-width: 80%; /* Adjust image size for smaller screens */
+    height: auto;
     display: block;
-    margin: auto;
-    padding-bottom: 40px;
-}
-.contact-card>form>h4{
-    font-family: 'Inter',sans-serif;
-}
+    margin: 0 auto 20px; /* Center and add bottom margin */
+  }
+  
+  .contact-card {
+    width: 100%;
+    padding: 20px; /* Add padding around the form */
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #ddd; /* Add a subtle border */
+    border-radius: 8px; /* Add rounded corners */
+    background-color: #f9f9f9; /* Light background */
+  }
+  
+  .contact-card > h4 {
+    font-family: 'Inter', sans-serif;
+    color: #333; /* Darker heading text */
+    margin-bottom: 20px;
+  }
+  
+  .form-control {
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  .input-group-text {
+    background-color: #e9ecef;
+    border-radius: 4px 0 0 4px;
+    padding: 10px;
+  }
+  
+  .btn-info {
+    border-radius: 25px !important; /* More rounded button */
+    padding: 12px 24px !important;
+    font-size: 1.1rem;
+  }
+  
+  .alert {
+    margin-top: 20px;
+    border-radius: 4px;
+  }
+  
+  /* Media query for larger screens (to show the image side-by-side) */
+  @media (min-width: 768px) {
+    .row.ml-1 {
+      margin-left: 1rem !important; /* Restore Bootstrap's margin */
+    }
+    .testimonial-card {
+      padding-bottom: 0;
+    }
+    .contact-image {
+      max-width: 100%;
+      height: 260px;
+      margin-bottom: 0;
+    }
+    .contact-card {
+      height: auto; /* Adjust height for side-by-side layout */
+      padding: 30px;
+    }
+  }

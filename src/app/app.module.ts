@@ -12,7 +12,8 @@ import { ResumeComponent } from './Resume/Resume.component';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     AppComponent,BrowserModule,
     RouterModule.forRoot(AppRoutes),ProfileComponent,NavComponent,
     ContactComponent,ResumeComponent,AboutComponent,
-    AchievementsComponent,ExperienceComponent,ProjectsComponent,
-    PdfViewerModule],
+    AchievementsComponent,ExperienceComponent,ProjectsComponent ],
     providers: [],
     bootstrap: []
 })
