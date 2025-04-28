@@ -1,6 +1,7 @@
+
 @media (max-width: 768px) {
   .card-body {
-    height: auto;
+    height: 100%;
     padding: 10px;
   }
 
