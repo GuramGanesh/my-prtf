@@ -1,34 +1,38 @@
-<div class="row middle-line"> 
-  <div class="col ml-3">
-    <div style="margin:5%; max-height: 580px; height: 100%; overflow-y: auto;">
-      <div *ngFor="let project of _projects" style="color: rgb(58, 57, 57);">
-        <div class="resume-card">
-          <strong class="resume-card-title">
-            {{project.name}} - {{project.type}}
+<div class="row project-section">
+  <div class="col ml-md-5">
+    <div class="project-container">
+      <h4 class="section-title mb-4">Projects</h4>
+      <div *ngFor="let project of _projects" class="project-card">
+        <div class="project-header">
+          <strong class="project-title">
+            {{project.name}}
+            <span class="project-type text-muted">({{project.type}})</span>
           </strong>
-          <hr style="margin:1px !important;">
-          <p>{{project.description}}</p>
-          <ul>
-            <li *ngFor="let achievement of project.achievements">
-              {{achievement}}
-            </li>
+        </div>
+        <hr class="project-divider">
+        <p class="project-description">{{project.description}}</p>
+        <div *ngIf="project.achievements && project.achievements.length > 0">
+          <h6 class="project-subtitle">Key Achievements</h6>
+          <ul class="project-achievements">
+            <li *ngFor="let achievement of project.achievements">{{achievement}}</li>
           </ul>
-          <p>Skills: {{ project.technologies.join(' , ') }}</p>
-            <div class="button-container" style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
-            <a *ngIf="project.githubLink" [href]="project.githubLink" target="_blank" class="btn btn-primary">
-              <i class="fa fa-code"></i> Code
-            </a>
-            <button *ngIf="project.videoLink" (click)="openVideoPopup(project.videoLink)" class="btn btn-secondary">
-              <i class="fa fa-video-camera"></i> Video
-            </button>
-            </div>
+        </div>
+        <p class="project-skills">
+          <strong class="text-muted">Skills:</strong> {{ project.technologies.join(' , ') }}
+        </p>
+        <div class="project-actions">
+          <a *ngIf="project.githubLink" [href]="project.githubLink" target="_blank" class="btn btn-primary project-button">
+            <i class="fa fa-code"></i> Code
+          </a>
+          <button *ngIf="project.videoLink" (click)="openVideoPopup(project.videoLink)" class="btn btn-secondary project-button">
+            <i class="fa fa-video-camera"></i> Video
+          </button>
         </div>
       </div>
-      <!-- Video Popup -->
-      <div *ngIf="isVideoPopupVisible" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); z-index: 1000;">
-        <div style="position: relative; max-width: 800px; margin: 5% auto; background: #fff; padding: 20px; border-radius: 8px; overflow: hidden;">
-        <video id="videoElement" controls style="width: 100%; height: auto;"></video>
-        <button (click)="closeVideoPopup()" style="position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">Close</button>
+      <div *ngIf="isVideoPopupVisible" class="video-popup">
+        <div class="video-popup-content">
+          <video id="videoElement" controls class="video-player"></video>
+          <button (click)="closeVideoPopup()" class="btn btn-danger close-popup-button">Close</button>
         </div>
       </div>
     </div>
