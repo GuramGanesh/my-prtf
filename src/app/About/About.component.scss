@@ -1,8 +1,9 @@
 .about-top {
   width: 100%;
-  height: 35%;
+  height: auto; /* Adjust height to content */
   background: rgba(196, 196, 196, 0.3);
   border-radius: 0px 0px 45% 15%;
+  padding: 20px 0; /* Add padding for spacing */
 }
 
 .about-title {
@@ -14,18 +15,20 @@
 }
 
 .about-desc {
-  margin: 0px 50px 0px 50px;
+  margin: 15px 50px; /* Add top margin */
   font-family: "Inter", sans-serif;
   text-align: justify;
   font-size: 1rem;
   line-height: 1.5rem;
   text-indent: 5%;
   color: #000000;
+  padding: 0% 10% 3% 10%;
 }
 
 .about-content {
   width: 100%;
-  height: auto;
+  height: auto; /* Adjust height to content */
+  padding: 20px 0; /* Add padding for spacing */
 }
 
 .about-svg {
@@ -34,17 +37,44 @@
   height: auto;
 }
 
-.skill-box {
-  width: 100px;
-  height: 30px;
+.skills-section {
+  margin: 20px 0; /* Add top and bottom margin for spacing */
+}
+
+.skills-grid {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap; /* Allow skills to wrap to the next line */
+}
+
+.skill-item {
   background: rgba(196, 196, 196, 0.3);
   box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.25);
   font-family: "Inter", sans-serif;
   text-align: center;
-  padding: 2px 4px;
-  margin: 10px;
+  padding: 5px 10px; /* Adjust padding */
+  margin: 8px; /* Adjust margin for spacing */
   color: black;
-  float: left;
+  display: inline-block; /* Display as inline blocks to control width and margin */
+}
+
+.skill-icon {
+  color: green; /* Example icon color */
+  margin-right: 5px;
+}
+
+.skill-name {
+  font-size: 0.9rem;
+}
+
+.image-section {
+  text-align: center; /* Center image on mobile */
+  margin-top: 20px; /* Add top margin for spacing */
+}
+
+.about-svg {
+  max-width: 80%; /* Adjust max width for better mobile display */
+  height: auto;
 }
 
 /* Media Queries for Mobile Devices */
@@ -54,40 +84,81 @@
   }
 
   .about-desc {
-    margin: 0 20px;
+    margin: 15px 20px; /* Adjust horizontal margin */
     font-size: 0.9rem;
     line-height: 1.4rem;
   }
 
   .skills-section {
-    margin-left: 0;
-    margin-right: 0;
+    margin: 20px 0; /* Keep consistent margin */
   }
 
-  .skill-box {
-    width: 80px;
-    height: 25px;
-    font-size: 0.8rem;
+  .skills-grid {
+    /* Keep flex-wrap for mobile as well */
+  }
+
+  .skill-item {
+    width: auto; /* Adjust width to content on mobile */
+    font-size: 0.85rem;
+    padding: 4px 8px;
+    margin: 6px;
   }
 
   .about-svg {
-    max-width: 200px;
-    height: auto;
+    max-width: 60%; /* Further adjust image size on mobile */
   }
 
   .image-section {
+    text-align: center; /* Ensure center alignment on mobile */
     margin-top: 20px;
   }
 }
 
-.image-section {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  text-align: right;
-}
+/* Media Queries for Larger Devices */
+@media (min-width: 769px) {
+  .about-top {
+    height: 35%; /* Restore height for larger screens if needed */
+    padding: 30px 0;
+  }
 
-.about-svg {
-  max-width: 40%;
-  height: auto;
+  .about-title {
+    font-size: 1.75rem;
+    line-height: 40px;
+    margin-top: 30px;
+  }
+
+  .about-desc {
+    margin: 30px 100px;
+    font-size: 1.1rem;
+    line-height: 1.7rem;
+  }
+
+  .about-content {
+    padding: 40px 0;
+  }
+
+  .skills-section {
+    margin: 30px 0;
+  }
+
+  .skills-grid {
+    margin-top: 20px;
+  }
+
+  .skill-item {
+    width: auto; /* Adjust width to content on larger screens */
+    padding: 5px 10px;
+    margin: 10px;
+    font-size: 1rem;
+  }
+
+  .image-section {
+    text-align: right; /* Align image to the right on larger screens */
+    margin-top: 0; /* Remove top margin on larger screens */
+    position: static; /* Remove absolute positioning */
+  }
+
+  .about-svg {
+    max-width: 40%; /* Restore max width for larger screens */
+  }
 }
