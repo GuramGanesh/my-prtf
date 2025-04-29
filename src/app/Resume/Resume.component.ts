@@ -10,7 +10,7 @@ import * as pdfjsLib from 'pdfjs-dist';
 export class ResumeComponent implements AfterViewInit {
   _resumeLink: string = resumeLink;
   currentScale = 1.3;
-  
+
   @ViewChild('pdfContainer', { static: false }) 
   pdfContainer!: ElementRef<HTMLDivElement>;
 
@@ -28,7 +28,13 @@ export class ResumeComponent implements AfterViewInit {
       for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
         const page = await pdf.getPage(pageNum);
         const viewport = page.getViewport({ scale: this.currentScale });
-        
+
+        // Create container for each page
+        const pageContainer = document.createElement('div');
+        pageContainer.style.position = 'relative';
+        pageContainer.style.marginBottom = '10px';
+
+        // Render canvas
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d')!;
         canvas.height = viewport.height;
@@ -36,17 +42,37 @@ export class ResumeComponent implements AfterViewInit {
 
         await page.render({
           canvasContext: context,
-          viewport: viewport
+          viewport: viewport,
         }).promise;
 
-        this.pdfContainer.nativeElement.appendChild(canvas);
+        // Create text layer
+        const textLayerDiv = document.createElement('div');
+        textLayerDiv.className = 'textLayer';
+        textLayerDiv.style.position = 'absolute';
+        textLayerDiv.style.top = '0';
+        textLayerDiv.style.left = '0';
+        textLayerDiv.style.width = `${viewport.width}px`;
+        textLayerDiv.style.height = `${viewport.height}px`;
+
+        // Append canvas and text layer to page container
+        pageContainer.appendChild(canvas);
+        pageContainer.appendChild(textLayerDiv);
+        this.pdfContainer.nativeElement.appendChild(pageContainer);
+
+        // Render text layer
+        const textContent = await page.getTextContent();
+        pdfjsLib.renderTextLayer({
+          textContent,
+          container: textLayerDiv,
+          viewport,
+          textDivs: [],
+        }).promise;
       }
     } catch (error) {
       console.error('Error rendering PDF:', error);
     }
   }
 
-  // Add zoom functionality
   zoomIn() {
     this.currentScale = Math.min(this.currentScale + 0.1, 2.5);
     this.renderPDF(this._resumeLink);
