@@ -78,3 +78,11 @@ canvas {
 .textLayer ::selection {
   background: rgba(0, 0, 255, 0.3); /* Highlight color when selecting text */
 }
+
+.textLayer > span {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0% 0%;
+}
