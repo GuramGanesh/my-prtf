@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { resumeLink } from '../configuration';
-import * as pdfjsLib from 'pdfjs-dist';
+import * as pdfjsLib from 'pdfjs-dist/build/pdf';
+import 'pdfjs-dist/build/pdf.worker.entry'; // Import worker entry
 
 @Component({
   selector: 'app-resume',
@@ -19,8 +20,6 @@ export class ResumeComponent implements AfterViewInit {
   }
 
   async renderPDF(pdfUrl: string) {
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/5.0.375/pdf.worker.min.mjs';
-
     try {
       const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
       this.pdfContainer.nativeElement.innerHTML = '';
@@ -29,7 +28,7 @@ export class ResumeComponent implements AfterViewInit {
         const page = await pdf.getPage(pageNum);
         const viewport = page.getViewport({ scale: this.currentScale });
 
-        // Create container for each page
+        // Create page container
         const pageContainer = document.createElement('div');
         pageContainer.style.position = 'relative';
         pageContainer.style.marginBottom = '10px';
@@ -54,14 +53,13 @@ export class ResumeComponent implements AfterViewInit {
         textLayerDiv.style.width = `${viewport.width}px`;
         textLayerDiv.style.height = `${viewport.height}px`;
 
-        // Append canvas and text layer to page container
         pageContainer.appendChild(canvas);
         pageContainer.appendChild(textLayerDiv);
         this.pdfContainer.nativeElement.appendChild(pageContainer);
 
-        // Render text layer
+        // Render text layer content
         const textContent = await page.getTextContent();
-        pdfjsLib.renderTextLayer({
+        await pdfjsLib.renderTextLayer({
           textContent,
           container: textLayerDiv,
           viewport,
