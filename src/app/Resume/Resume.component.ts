@@ -1,7 +1,6 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { resumeLink } from '../configuration';
-import * as pdfjsLib from 'pdfjs-dist/build/pdf';
-import 'pdfjs-dist/build/pdf.worker.entry'; // Import worker entry
+import * as pdfjsLib from 'pdfjs-dist';
 
 @Component({
   selector: 'app-resume',
@@ -11,7 +10,7 @@ import 'pdfjs-dist/build/pdf.worker.entry'; // Import worker entry
 export class ResumeComponent implements AfterViewInit {
   _resumeLink: string = resumeLink;
   currentScale = 1.3;
-
+  
   @ViewChild('pdfContainer', { static: false }) 
   pdfContainer!: ElementRef<HTMLDivElement>;
 
@@ -20,6 +19,8 @@ export class ResumeComponent implements AfterViewInit {
   }
 
   async renderPDF(pdfUrl: string) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/pdf.worker.mjs';
+
     try {
       const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
       this.pdfContainer.nativeElement.innerHTML = '';
@@ -27,13 +28,7 @@ export class ResumeComponent implements AfterViewInit {
       for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
         const page = await pdf.getPage(pageNum);
         const viewport = page.getViewport({ scale: this.currentScale });
-
-        // Create page container
-        const pageContainer = document.createElement('div');
-        pageContainer.style.position = 'relative';
-        pageContainer.style.marginBottom = '10px';
-
-        // Render canvas
+        
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d')!;
         canvas.height = viewport.height;
@@ -41,36 +36,17 @@ export class ResumeComponent implements AfterViewInit {
 
         await page.render({
           canvasContext: context,
-          viewport: viewport,
+          viewport: viewport
         }).promise;
 
-        // Create text layer
-        const textLayerDiv = document.createElement('div');
-        textLayerDiv.className = 'textLayer';
-        textLayerDiv.style.position = 'absolute';
-        textLayerDiv.style.top = '0';
-        textLayerDiv.style.left = '0';
-        textLayerDiv.style.width = `${viewport.width}px`;
-        textLayerDiv.style.height = `${viewport.height}px`;
-
-        pageContainer.appendChild(canvas);
-        pageContainer.appendChild(textLayerDiv);
-        this.pdfContainer.nativeElement.appendChild(pageContainer);
-
-        // Render text layer content
-        const textContent = await page.getTextContent();
-        await pdfjsLib.renderTextLayer({
-          textContent,
-          container: textLayerDiv,
-          viewport,
-          textDivs: [],
-        }).promise;
+        this.pdfContainer.nativeElement.appendChild(canvas);
       }
     } catch (error) {
       console.error('Error rendering PDF:', error);
     }
   }
 
+  // Add zoom functionality
   zoomIn() {
     this.currentScale = Math.min(this.currentScale + 0.1, 2.5);
     this.renderPDF(this._resumeLink);
