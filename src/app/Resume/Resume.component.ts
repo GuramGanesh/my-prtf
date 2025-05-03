@@ -19,7 +19,7 @@ export class ResumeComponent implements AfterViewInit {
   }
 
   async renderPDF(pdfUrl: string) {
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/pdf.worker.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = '../assets/pdf.worker.mjs';
 
     try {
       const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
