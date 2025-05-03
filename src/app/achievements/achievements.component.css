@@ -39,7 +39,7 @@
 
 /* Refined Achievement Card Styling */
 .achievement-card {
-  background: linear-gradient(135deg, #f5f7fa, #e8eff5); /* Softer grey to light blue gradient */
+  background: linear-gradient(135deg, #e5e5e5, #e1ebea); /* Softer grey to light blue gradient */
   border-radius: 10px; /* Slightly more rounded */
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
   padding: 20px 25px; /* Increased padding */
