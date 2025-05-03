@@ -1,31 +1,137 @@
+/* 1. Main Section Wrapper */
+.achievements-section-wrapper {
+  display: flex;
+  flex-direction: row; /* Arrange columns side-by-side */
+  align-items: center; /* Vertically align items in the center */
+  gap: 40px; /* Space between the text column and image column */
+  padding: 20px 0; /* Add some vertical padding if needed */
+}
+
+/* 2. Achievements List Column */
+.achievements-list-column {
+  flex: 1 1 60%; /* Allow column to grow/shrink, basis of 60% width */
+  /* The achievements-container inside will handle the scrolling */
+}
+
+/* 3. Image Column */
+.achievement-image-column {
+  flex: 1 1 40%; /* Allow column to grow/shrink, basis of 40% width */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the image container */
+  /* background-color: #f8f9fa; Optional: subtle background for image column */
+  /* border-radius: 12px; */
+  padding: 20px;
+}
+
+.image-section {
+ text-align: center; /* Center the image within its container */
+}
+
+/* Styling for the scrollable container within the column */
 .achievements-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background: linear-gradient(135deg, #f0f2f5, #bdcee4); /* Subtle light grey gradient */
-  }
-  
-  .achievement-card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-  }
-  
-  .achievement-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Slightly reduced gap */
+  padding-right: 15px; /* Add padding so content doesn't touch scrollbar */
+  /* max-height and overflow-y are set inline, which is fine */
+}
+
+/* Refined Achievement Card Styling */
+.achievement-card {
+  background: linear-gradient(135deg, #f5f7fa, #e8eff5); /* Softer grey to light blue gradient */
+  border-radius: 10px; /* Slightly more rounded */
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
+  padding: 20px 25px; /* Increased padding */
+  display: flex; /* Align icon and text */
+  align-items: center; /* Vertically center icon and text */
+  gap: 15px; /* Space between icon and text */
+  border-left: 5px solid #4A90E2; /* Accent border (adjust color to match your theme) */
+  transition: all 0.3s ease-in-out; /* Smoother transition for hover */
+}
+
+.achievement-card:hover {
+  transform: translateY(-4px) scale(1.01); /* More subtle lift, slight scale */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  border-left-color: #357ABD; /* Darken border on hover */
+}
+
+/* Optional Icon Styling */
+.achievement-icon {
+  font-size: 1.8em; /* Adjust size as needed */
+  color: #4A90E2; /* Match accent color (or choose another) */
+  opacity: 0.8;
+}
+
+/* Text Styling */
+.achievement-text {
+  font-size: 1.1em; /* Slightly adjusted size */
+  color: #333;
+  line-height: 1.6; /* Improved readability */
+  margin: 0; /* Remove default paragraph margin */
+  flex: 1; /* Allow text to take remaining space */
+}
+
+
+/* Refined Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1; /* Slightly darker thumb for better visibility */
+  border-radius: 4px;
+  border: 2px solid #f1f1f1; /* Creates padding around thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8a8a8; /* Darker on hover */
+}
+
+/* --- Responsive Considerations --- */
+@media (max-width: 992px) { /* Adjust breakpoint as needed (e.g., Bootstrap's 'lg') */
+  .achievements-section-wrapper {
+    flex-direction: column; /* Stack columns vertically */
+    align-items: stretch; /* Stretch items to full width */
+    gap: 30px;
   }
 
-  ::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+  .achievements-list-column,
+  .achievement-image-column {
+    flex-basis: auto; /* Reset flex basis */
+    width: 100%; /* Take full width */
   }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: rgb(255, 255, 255); /* Color of the scrollbar thumb */
-    border-radius: 4px; /* Rounded corners for the scrollbar thumb */
+
+  .achievement-image-column {
+     max-height: 300px; /* Prevent image taking too much vertical space */
+     padding: 10px;
+     order: -1; /* Optional: Move image above the text on mobile */
   }
-  
-  ::-webkit-scrollbar-track {
-    background-color: #f1f1f1; /* Background color of the scrollbar track */
+
+  .achievement-image-column img {
+      max-width: 60%; /* Reduce image size further on smaller screens */
+      max-height: 280px;
   }
+
+  .achievements-container {
+      max-height: 400px; /* Adjust scroll height for mobile */
+  }
+}
+
+@media (max-width: 768px) { /* Adjust breakpoint as needed (e.g., Bootstrap's 'md') */
+    .achievement-card {
+        padding: 15px 20px;
+        gap: 10px;
+    }
+    .achievement-icon {
+        font-size: 1.5em;
+    }
+    .achievement-text {
+        font-size: 1em;
+    }
+}

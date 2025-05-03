@@ -1,11 +1,14 @@
-<div class="achievements-container" style="margin: 5%; max-height: 580px; height: 100%; overflow-y: auto;">
+<div class="achievements-section-wrapper" style="margin: 5%;"> <div class="achievements-list-column">
+  <div class="achievements-container" style="max-height: 580px; height: 100%; overflow-y: auto;">
     <div *ngFor="let achievement of _achievements" class="achievement-card">
-      <p style="font-size: 1.3em;color: #333; text-decoration: none;">{{ achievement }}</p>
+       <i class="fas fa-trophy achievement-icon"></i> <p class="achievement-text">{{ achievement }}</p>
     </div>
-    <!-- Image Section -->
-    <div class="col-md-7" style="display: flex; align-items: flex-end; justify-content: flex-start;">
-      <div class="image-section">
-      <img class="img-fluid about-svg" src="../assets/images/Design_Thinking.svg" alt="About Image" style="width: 80%;">
-      </div>
-    </div>
+  </div>
+</div>
+
+<div class="achievement-image-column">
+  <div class="image-section">
+      <img class="img-fluid about-svg" src="../assets/images/Design_Thinking.svg" alt="Achievements Illustration" style="width: 90%; max-width: 450px;"> </div>
+</div>
+
 </div>
