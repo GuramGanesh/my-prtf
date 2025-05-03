@@ -51,8 +51,8 @@
 
 .timeline-content:hover{
   transform: translateY(-5px);
-    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2), 0 12px 20px rgba(0, 0, 0, 0.2);
-    z-index: 10;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2), 0 12px 20px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 
 .timeline-marker {
@@ -93,7 +93,7 @@
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
   margin-left: 20px; /* Space between marker and content */
   position: relative;
-  background: linear-gradient(135deg, #e7e7e7, #f0f0f0); /* Subtle light grey gradient */
+  background: linear-gradient(135deg, #e5e5e5, #e1ebea); /* Subtle light grey gradient */
 }
 
 .timeline-title {
