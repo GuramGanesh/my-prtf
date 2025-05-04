@@ -1,88 +1,233 @@
-/* Updated CSS */
-.pdf-container {
-  position: relative;
-  width: 100%;
-  height: 85vh;
-  overflow-y: auto;
-}
+  /* Added wrapper for potential future layout needs */
+  .pdf-viewer-wrapper {
+    width: 100%;
+    height: 100%; /* Or adjust as needed */
+    display: flex; /* Optional: if you need to center the container */
+    justify-content: center; /* Optional */
+    align-items: flex-start; /* Optional */
+  }
 
-canvas {
-  position: relative;
-  z-index: 1; /* Lower than controls */
-  margin: 10px auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
 
-.transparent-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
-  transform: scale(1.15);
-}
+  /* Container for the entire PDF viewer */
+  .pdf-container {
+    position: relative; /* Needed for positioning controls and overlays */
+    width: 100%; /* Take full width of its wrapper */
+    max-width: 1200px; /* Optional: Limit max width on large screens */
+    height: 85vh; /* Use a fixed height or max-height */
+    /* Consider max-height instead if content height varies a lot */
+    /* max-height: 85vh; */
+    overflow-y: auto; /* Allow vertical scrolling for the container */
+    background-color: #e9ecef; /* Slightly different background */
+    padding-top: 60px; /* Add padding to prevent content hiding under fixed controls */
+    padding-bottom: 15px; /* Add some padding at the bottom */
+    box-sizing: border-box; /* Include padding in width/height calculation */
+    border: 1px solid #dee2e6; /* Add a subtle border */
+    border-radius: 8px; /* Rounded corners for the container */
+    margin: 10px; /* Add some margin around the container */
 
-.transparent-btn {
-  background: rgba(0, 0, 0, 0.6);
-  border: none;
-  color: white;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.3rem;
-  backdrop-filter: blur(4px);
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.pdf-controls {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  display: flex;
-  gap: 8px;
-}
+     /* --- Standard Scrollbar Styling (for Firefox, etc.) --- */
+     scrollbar-width: thin; /* "auto" or "thin" */
+     scrollbar-color: #888 #f1f1f1; /* thumb track */
+  }
 
-::-webkit-scrollbar {
-  width: 8px; /* Width of the scrollbar */
-}
+  /* --- WebKit Scrollbar Styling (Chrome, Safari, Edge) --- */
+  .pdf-container::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+  }
 
-::-webkit-scrollbar-thumb {
-  background-color: lightgrey; /* Color of the scrollbar thumb */
-  border-radius: 4px; /* Rounded corners for the scrollbar thumb */
-}
+  .pdf-container::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background color of the scrollbar track */
+    border-radius: 5px;
+  }
 
-::-webkit-scrollbar-track {
-  background-color: #f1f1f1; /* Background color of the scrollbar track */
-}
+  .pdf-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 5px; /* Rounded corners for the scrollbar thumb */
+    border: 2px solid #f1f1f1; /* Creates padding around thumb */
+  }
 
-.textLayer {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-  opacity: 0.2;
-  line-height: 1;
-}
+  .pdf-container::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker thumb on hover */
+  }
 
-.textLayer > div {
-  color: transparent; /* Makes text invisible but selectable */
-  position: absolute;
-  white-space: pre;
-  cursor: text;
-  transform-origin: 0% 0%;
-}
 
-.textLayer ::selection {
-  background: rgba(0, 0, 255, 0.3); /* Highlight color when selecting text */
-}
+  /* Area where canvas elements are rendered */
+  .pdf-render-area {
+    width: 100%;
+    display: flex; /* Use flexbox to manage canvas layout */
+    flex-direction: column; /* Stack pages vertically */
+    align-items: center; /* Center pages horizontally */
+    padding: 0 10px; /* Add horizontal padding inside render area */
+    box-sizing: border-box;
+  }
 
-.textLayer > span {
-  color: transparent;
-  position: absolute;
-  white-space: pre;
-  cursor: text;
-  transform-origin: 0% 0%;
-}
+  /* Placeholder message styling */
+  .placeholder-message {
+      padding: 40px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 1.1rem;
+  }
+
+
+  /* Styling for dynamically created canvas elements */
+  canvas {
+    display: block; /* Ensure canvas behaves like a block element */
+    max-width: 100%; /* Crucial: Prevent canvas from exceeding container width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 15px auto; /* Vertical margin between pages, centered horizontally */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Softer shadow */
+    background-color: white; /* Ensure canvas background is white */
+    border-radius: 4px; /* Slightly rounded corners for canvas */
+  }
+
+  /* Controls container */
+  .pdf-controls {
+    position: absolute; /* Position relative to pdf-container */
+    top: 10px; /* Position from the top */
+    right: 10px; /* Position from the right */
+    z-index: 1000; /* Ensure controls are above the canvas */
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    background-color: rgba(0, 0, 0, 0.55); /* Semi-transparent background */
+    padding: 8px 10px; /* Adjust padding */
+    border-radius: 20px; /* Pill shape */
+    backdrop-filter: blur(6px); /* Frosted glass effect */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  /* Styling for control buttons */
+  .transparent-btn {
+    background: rgba(255, 255, 255, 0.15); /* Slightly less transparent */
+    border: 1px solid rgba(255, 255, 255, 0.25); /* Subtle border */
+    color: white;
+    width: 38px; /* Adjust size */
+    height: 38px;
+    border-radius: 50%; /* Circular buttons */
+    cursor: pointer;
+    font-size: 1.6rem; /* Larger icon size */
+    font-weight: bold;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1; /* Ensure icon is centered vertically */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4); /* Text shadow for readability */
+  }
+
+  .transparent-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.3); /* Lighter hover */
+    transform: scale(1.08); /* Slightly larger on hover */
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .transparent-btn:active:not(:disabled) {
+    transform: scale(1.02); /* Slight shrink on click */
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .transparent-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: rgba(100, 100, 100, 0.2); /* Greyed out background */
+    border-color: rgba(100, 100, 100, 0.3);
+    transform: scale(1); /* Reset transform */
+  }
+
+  /* Loading Overlay */
+  .loading-overlay {
+    position: absolute; /* Cover the container */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); /* Darker overlay */
+    color: white;
+    display: flex;
+    flex-direction: column; /* Stack spinner and text */
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 1001; /* Above controls */
+    border-radius: 8px; /* Match container */
+    gap: 15px; /* Space between spinner and text */
+  }
+
+  /* Simple CSS Spinner */
+  .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3); /* Light border */
+    border-left-color: #fff; /* White color for spinning part */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+  /* --- Responsive Adjustments --- */
+
+  /* Adjust control position and container padding on smaller screens */
+  @media (max-width: 768px) {
+    .pdf-container {
+       height: 88vh; /* Maybe slightly taller on mobile */
+       padding-top: 55px; /* Adjust padding */
+       padding-bottom: 65px; /* Adjust padding if controls move to bottom */
+       margin: 5px; /* Reduce margin */
+    }
+
+
+    .pdf-controls {
+      /* Keep controls at top-right or move to bottom-center */
+      /* Option 1: Keep top-right (current) */
+       top: 8px;
+       right: 8px;
+       padding: 6px 8px;
+      /* Option 2: Move to bottom-center */
+      /* top: auto; */
+      /* bottom: 10px; */
+      /* left: 50%; */
+      /* transform: translateX(-50%); */
+      /* width: auto; */
+      /* padding: 6px 10px; */
+    }
+
+    .transparent-btn {
+      width: 36px;
+      height: 36px;
+      font-size: 1.4rem;
+    }
+
+    .pdf-render-area {
+        padding: 0 5px; /* Reduce padding */
+    }
+
+
+    canvas {
+       margin: 10px auto; /* Reduce margin slightly */
+       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Adjust shadow */
+    }
+  }
+
+  @media (max-width: 480px) {
+      .pdf-container {
+          height: 90vh; /* Even taller on very small screens */
+          border-radius: 4px; /* Less rounding */
+      }
+      .transparent-btn {
+          width: 34px;
+          height: 34px;
+          font-size: 1.3rem;
+      }
+  }
+
+
+  /* Hide text layer elements if they were used (they are not in this version) */
+  .textLayer {
+    display: none;
+  }

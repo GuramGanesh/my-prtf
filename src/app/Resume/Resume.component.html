@@ -1,18 +1,15 @@
-
-<!-- Ensure the correct paths to the stylesheets or remove them if not needed -->
-
-<!-- Updated Template -->
-<!-- <div class="pdf-controls">
-    <button class="transparent-btn" (click)="zoomIn()">+</button>
-    <button class="transparent-btn" (click)="zoomOut()">−</button>
-</div>
-<div #pdfContainer class="pdf-container"></div> -->
-
-<!-- Template -->
 <div class="pdf-container">
-    <div class="pdf-controls">
-        <button class="transparent-btn" (click)="zoomOut()">−</button>
-        <button class="transparent-btn" (click)="zoomIn()">+</button>
+    <div *ngIf="isLoading" class="loading-overlay">
+        Loading PDF...
     </div>
-    <div #pdfContainer></div>
-  </div>
+    <div class="pdf-controls">
+        <button class="transparent-btn" (click)="zoomOut()" title="Zoom Out"
+            [disabled]="renderTaskRunning || currentScale <= MIN_SCALE">
+            &minus; </button>
+        <button class="transparent-btn" (click)="zoomIn()" title="Zoom In"
+            [disabled]="renderTaskRunning || currentScale >= MAX_SCALE">
+            + </button>
+    </div>
+    <div #pdfContainer class="pdf-render-area">
+    </div>
+</div>
