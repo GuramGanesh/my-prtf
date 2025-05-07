@@ -19,15 +19,15 @@ export class ResumeComponent implements AfterViewInit, OnDestroy {
   // pdfWorkerSrc: PdfJsWorkerEntryType = '../assets/pdf.worker.mjs'; // Adjust path if needed. Common paths: 'pdf.worker.js', 'assets/pdf.worker.js', node_modules/pdfjs-dist/build/pdf.worker.js'
 
   // --- State ---
-  currentScale: number = 0.8; // Initial scale, will be adjusted
+  currentScale: number = 5.0; // Initial scale, will be adjusted
   pdfDoc: PDFDocumentProxy | null = null; // Store the loaded PDF document
   isLoading: boolean = true; // Flag for loading state
   renderTaskRunning: boolean = false; // Flag to prevent concurrent rendering
 
 
   // --- Constants ---
-  readonly MIN_SCALE = 0.5;
-  readonly MAX_SCALE = 3.0;
+  readonly MIN_SCALE = 3.0;
+  readonly MAX_SCALE = 5.0;
   readonly SCALE_STEP = 0.2;
   readonly RESIZE_DEBOUNCE_TIME = 150; // milliseconds
 
@@ -117,7 +117,7 @@ export class ResumeComponent implements AfterViewInit, OnDestroy {
     try {
       // Get the first page to determine the base width
       const page: PDFPageProxy = await this.pdfDoc.getPage(1);
-      const viewport = page.getViewport({ scale: 0.9 }); // Get viewport at scale 1.0
+      const viewport = page.getViewport({ scale: 5.0 }); // Get viewport at scale 1.0
       const pdfBaseWidth = viewport.width;
 
       // Calculate the scale needed to fit the PDF width to the container width
