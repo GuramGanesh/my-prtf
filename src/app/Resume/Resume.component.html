@@ -1,15 +1,17 @@
 <div class="pdf-container">
-    <div *ngIf="isLoading" class="loading-overlay">
-        Loading PDF...
+  @if (isLoading) {
+    <div class="loading-overlay">
+      Loading PDF...
     </div>
-    <div class="pdf-controls">
-        <button class="transparent-btn" (click)="zoomOut()" title="Zoom Out"
-            [disabled]="renderTaskRunning || currentScale <= MIN_SCALE">
-            &minus; </button>
-        <button class="transparent-btn" (click)="zoomIn()" title="Zoom In"
-            [disabled]="renderTaskRunning || currentScale >= MAX_SCALE">
-            + </button>
-    </div>
-    <div #pdfContainer class="pdf-render-area">
-    </div>
+  }
+  <div class="pdf-controls">
+    <button class="transparent-btn" (click)="zoomOut()" title="Zoom Out"
+      [disabled]="renderTaskRunning || currentScale <= MIN_SCALE">
+    &minus; </button>
+    <button class="transparent-btn" (click)="zoomIn()" title="Zoom In"
+      [disabled]="renderTaskRunning || currentScale >= MAX_SCALE">
+    + </button>
+  </div>
+  <div #pdfContainer class="pdf-render-area">
+  </div>
 </div>

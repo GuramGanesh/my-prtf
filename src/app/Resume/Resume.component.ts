@@ -2,7 +2,7 @@ import { Component, AfterViewInit, ViewChild, ElementRef, HostListener, ChangeDe
 import { resumeLink } from '../configuration'; // Assuming this path is correct
 import * as pdfjsLib from 'pdfjs-dist';
 import { PDFDocumentProxy, PDFPageProxy } from 'pdfjs-dist/types/src/display/api'; // Import types
-import { CommonModule } from '@angular/common';
+
 
 // Define the type for the PDF worker entry point
 type PdfJsWorkerEntryType = string | { url: string };
@@ -11,7 +11,7 @@ type PdfJsWorkerEntryType = string | { url: string };
   selector: 'app-resume',
   templateUrl: './Resume.component.html', // Assumes you have this file
   styleUrls: ['./Resume.component.css'],   // Assumes you have this file
-  imports: [CommonModule]
+  imports: []
 })
 export class ResumeComponent implements AfterViewInit, OnDestroy {
   // --- Configuration ---

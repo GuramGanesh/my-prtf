@@ -1,11 +1,11 @@
 import { SocialMedia } from './../configuration';
 import { Component } from '@angular/core';
 import { Configuration } from '../configuration';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-Profile',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './Profile.component.html',
   styleUrls: ['./Profile.component.css']
 })

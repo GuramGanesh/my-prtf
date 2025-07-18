@@ -1,11 +1,11 @@
 import { Configuration, Skills } from './../configuration';
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 
 @Component({
   selector: 'app-about',
-  imports: [CommonModule], // Import CommonModule for *ngFor and *ngIf
+  imports: [], // Import CommonModule for *ngFor and *ngIf
   templateUrl: './About.component.html',
   styleUrls: ['./About.component.scss']
 })

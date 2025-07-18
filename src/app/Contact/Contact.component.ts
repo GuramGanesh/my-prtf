@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { db } from './firebase.config';
 import { collection, addDoc } from "firebase/firestore";
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-Contact',
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './Contact.component.html',
   styleUrls: ['./Contact.component.css']
 })

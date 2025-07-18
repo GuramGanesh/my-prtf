@@ -12,10 +12,12 @@
       <div class="skills-section mx-md-5 mx-3">
         <h4 class="text-primary mt-4 text-center text-md-start">My Skills</h4>
         <div class="skills-grid mt-3">
-          <div *ngFor="let skill of skills" class="skill-item d-flex align-items-center">
-            <span class="skill-icon me-2">✔</span>
-            <span class="skill-name text-secondary">{{ skill }}</span>
-          </div>
+          @for (skill of skills; track skill) {
+            <div class="skill-item d-flex align-items-center">
+              <span class="skill-icon me-2">✔</span>
+              <span class="skill-name text-secondary">{{ skill }}</span>
+            </div>
+          }
         </div>
       </div>
     </div>
