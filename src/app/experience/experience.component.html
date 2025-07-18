@@ -3,25 +3,29 @@
     <div class="experience-container">
       <h4 class="section-title mb-4">Experience</h4>
       <div class="timeline">
-        <div *ngFor="let item of _jobs; let isFirst = first; let isLast = last; let i = index;" class="timeline-item">
-          <div class="timeline-marker" [ngClass]="{'first': isFirst, 'last': isLast}">
-            <i class="fa"
-               [ngClass]="item.company === 'DBS Tech India' ? 'fa-university' : 'fa-building'"
-               aria-hidden="true">
-            </i>
+        @for (item of _jobs; track item; let isFirst = $first; let isLast = $last; let i = $index) {
+          <div class="timeline-item">
+            <div class="timeline-marker" [ngClass]="{'first': isFirst, 'last': isLast}">
+              <i class="fa"
+                [ngClass]="item.company === 'DBS Tech India' ? 'fa-university' : 'fa-building'"
+                aria-hidden="true">
+              </i>
+            </div>
+            <div class="timeline-content">
+              <strong class="timeline-title">
+                {{item.company}}
+                <small class="text-muted">({{item.Start_Date}} - {{item.End_Date}})</small>
+              </strong>
+              <p class="timeline-duration text-muted">{{calculateYearsofExperience(item.Start_Date, item.End_Date)}}</p>
+              <p class="timeline-rank">{{item.rank}}</p>
+              <ul class="timeline-description">
+                @for (point of item.description; track point) {
+                  <li>{{point}}</li>
+                }
+              </ul>
+            </div>
           </div>
-          <div class="timeline-content">
-            <strong class="timeline-title">
-              {{item.company}}
-              <small class="text-muted">({{item.Start_Date}} - {{item.End_Date}})</small>
-            </strong>
-            <p class="timeline-duration text-muted">{{calculateYearsofExperience(item.Start_Date, item.End_Date)}}</p>
-            <p class="timeline-rank">{{item.rank}}</p>
-            <ul class="timeline-description">
-              <li *ngFor="let point of item.description">{{point}}</li>
-            </ul>
-          </div>
-        </div>
+        }
       </div>
     </div>
   </div>

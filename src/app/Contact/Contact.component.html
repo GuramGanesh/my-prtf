@@ -15,53 +15,57 @@
                 <span class="input-group-text"><i class="fa fa-user text-info"></i></span>
               </div>
               <input type="text" class="form-control" id="FullName" placeholder="Full Name"
-                     [(ngModel)]="fullName" name="fullName" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa fa-envelope text-info"></i></span>
+                [(ngModel)]="fullName" name="fullName" required>
               </div>
-              <input type="email" class="form-control" id="Email" placeholder="YourMail@domain.com"
-                     [(ngModel)]="email" name="email" required email>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa fa-link text-info"></i></span>
+            <div class="form-group">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-envelope text-info"></i></span>
+                </div>
+                <input type="email" class="form-control" id="Email" placeholder="YourMail@domain.com"
+                  [(ngModel)]="email" name="email" required email>
+                </div>
               </div>
-              <input type="text" class="form-control" id="LinkToSocialMedia"
-                     placeholder="Your Social Media Link (Optional)" [(ngModel)]="linkToSocialMedia"
-                     name="linkToSocialMedia">
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-link text-info"></i></span>
+                  </div>
+                  <input type="text" class="form-control" id="LinkToSocialMedia"
+                    placeholder="Your Social Media Link (Optional)" [(ngModel)]="linkToSocialMedia"
+                    name="linkToSocialMedia">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-comment text-info"></i></span>
+                    </div>
+                    <textarea class="form-control" placeholder="Your Message" [(ngModel)]="message"
+                    name="message" rows="4" required></textarea>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-info btn-block rounded-pill py-2">Send Message</button>
+                </div>
+              </form>
+              @if (submissionSuccess) {
+                <div class="alert alert-success mt-3 text-center">
+                  We will collaborate! Thank you for reaching out.
+                </div>
+              }
+              @if (submissionError) {
+                <div class="alert alert-danger mt-3 text-center">
+                  Oops! Something went wrong. Please try again later.
+                </div>
+              }
             </div>
           </div>
-          <div class="form-group">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa fa-comment text-info"></i></span>
-              </div>
-              <textarea class="form-control" placeholder="Your Message" [(ngModel)]="message"
-                        name="message" rows="4" required></textarea>
+          <div class="col-md-6 d-none d-md-block">
+            <div class="testimonial-card">
+              <img src="../assets/images/Contact.svg" class="img-fluid contact-image" alt="Contact Us Illustration">
             </div>
           </div>
-          <div class="text-center">
-            <button type="submit" class="btn btn-info btn-block rounded-pill py-2">Send Message</button>
-          </div>
-        </form>
-        <div *ngIf="submissionSuccess" class="alert alert-success mt-3 text-center">
-          We will collaborate! Thank you for reaching out.
-        </div>
-        <div *ngIf="submissionError" class="alert alert-danger mt-3 text-center">
-          Oops! Something went wrong. Please try again later.
         </div>
       </div>
-    </div>
-    <div class="col-md-6 d-none d-md-block">
-      <div class="testimonial-card">
-        <img src="../assets/images/Contact.svg" class="img-fluid contact-image" alt="Contact Us Illustration">
-      </div>
-    </div>
-  </div>
-</div>

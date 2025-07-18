@@ -2,39 +2,51 @@
   <div class="col ml-md-5">
     <div class="project-container">
       <h4 class="section-title mb-4">Projects</h4>
-      <div *ngFor="let project of _projects" class="project-card">
-        <div class="project-header">
-          <strong class="project-title">
-            {{project.name}}
-            <span class="project-type text-muted">({{project.type}})</span>
-          </strong>
+      @for (project of _projects; track project) {
+        <div class="project-card">
+          <div class="project-header">
+            <strong class="project-title">
+              {{project.name}}
+              <span class="project-type text-muted">({{project.type}})</span>
+            </strong>
+          </div>
+          <hr class="project-divider">
+          <p class="project-description">{{project.description}}</p>
+          @if (project.achievements && project.achievements.length > 0) {
+            <div>
+              <h6 class="project-subtitle">Key Achievements</h6>
+              <ul class="project-achievements">
+                @for (achievement of project.achievements; track achievement) {
+                  <li>{{achievement}}</li>
+                }
+              </ul>
+            </div>
+          }
+          <p class="project-skills">
+            <strong class="text-muted">Skills:</strong> {{ project.technologies.join(' , ') }}
+          </p>
+          <div class="project-actions">
+            @if (project.githubLink) {
+              <a [href]="project.githubLink" target="_blank" class="btn btn-primary project-button">
+                <i class="fa fa-code"></i> Code
+              </a>
+            }
+            @if (project.videoLink) {
+              <button (click)="openVideoPopup(project.videoLink)" class="btn btn-secondary project-button">
+                <i class="fa fa-video-camera"></i> Video
+              </button>
+            }
+          </div>
         </div>
-        <hr class="project-divider">
-        <p class="project-description">{{project.description}}</p>
-        <div *ngIf="project.achievements && project.achievements.length > 0">
-          <h6 class="project-subtitle">Key Achievements</h6>
-          <ul class="project-achievements">
-            <li *ngFor="let achievement of project.achievements">{{achievement}}</li>
-          </ul>
+      }
+      @if (isVideoPopupVisible) {
+        <div class="video-popup">
+          <div class="video-popup-content">
+            <video id="videoElement" controls class="video-player"></video>
+            <button (click)="closeVideoPopup()" class="btn btn-danger close-popup-button">Close</button>
+          </div>
         </div>
-        <p class="project-skills">
-          <strong class="text-muted">Skills:</strong> {{ project.technologies.join(' , ') }}
-        </p>
-        <div class="project-actions">
-          <a *ngIf="project.githubLink" [href]="project.githubLink" target="_blank" class="btn btn-primary project-button">
-            <i class="fa fa-code"></i> Code
-          </a>
-          <button *ngIf="project.videoLink" (click)="openVideoPopup(project.videoLink)" class="btn btn-secondary project-button">
-            <i class="fa fa-video-camera"></i> Video
-          </button>
-        </div>
-      </div>
-      <div *ngIf="isVideoPopupVisible" class="video-popup">
-        <div class="video-popup-content">
-          <video id="videoElement" controls class="video-player"></video>
-          <button (click)="closeVideoPopup()" class="btn btn-danger close-popup-button">Close</button>
-        </div>
-      </div>
+      }
     </div>
   </div>
 </div>
